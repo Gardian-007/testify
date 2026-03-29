@@ -1,80 +1,76 @@
-import moment from "moment-timezone";
+const fs = require('fs')
 
-const CONNECTION = "pairing"; // qr atau pairing
-const OWNER_NAME = "Roseee";
-const NOMOR_BOT = "6285646476989"; // 628xx nomor wa
-const DESTINATION = "group"; // group , private, both
-const APIKEY = "19cf3ba8c7a0b6923de2c8f7"; // apikey dari autoresbot.com (paket apikey)
-const RATE_LIMIT = 3000; // 3 detik/chat
-const SIMILARITY = true; // Pencarian kemiripan command (true, false)
-const MODE = "production"; // [production, development] (jangan di ubah kecuali anda developer)
-const VERSION = global.version; // don't edit
+global.owner = "234" //owner number
+global.footer = "Maria " //footer section
+global.status = false //"self/public" section of the bot
+global.prefa = ['','!','.',',','🐤','🗿']
+global.owner = ['2250101676111']
+global.xprefix = '.'
+global.gambar = ''
+global.OWNER_NAME = "" //
+global.DEVELOPER = ["....A"] //
+global.BOT_NAME = "Hisoka-MD WhatsApp Bot"
+global.bankowner = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
+global.creatorName = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
+global.ownernumber = '2349012834275'  //creator number
+global.location = "..."
+global.prefa = ['','!','.','#','&']
+//================DO NOT CHANGE OR YOU'LL GET AN ERROR=============\
+global.footer = "𝐖𝐞𝐛 𝐛𝐨𝐭" //footer section
+global.link = ""
+global.autobio = true //auto update bio
+global.botName = "Hisoka-MD ⚡"
+global.version = "𝘄𝗲𝗯"
+global.botname = "Hisoka-MD"
+global.author = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
+global.themeemoji = '👨‍✈️'
+global.wagc = '.....'
+global.thumbnail = ''
+global.richpp = ' '
+global.packname = "Sticker By Hisoka-MD"
+global.author = "\n\n\nCreate by  web wa bot"
+global.creator = "2250101676111@s.whatsapp.net"
+global.ownername = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
+global.onlyowner = `𝘴𝘰𝘳𝘳𝘺 𝘰𝘯𝘭𝘺 𝘧𝘰𝘳  𝘰𝘸𝘯𝘦𝘳𝘴`
+  // reply 
+global.database = `𝘛𝘰 𝘣𝘦 𝘪𝘯  𝘥𝘢𝘵𝘢𝘣𝘢𝘴𝘦 𝘣𝘢𝘴𝘦 𝘤𝘰𝘯𝘵𝘢𝘤𝘵 𝗧𝗠𝗞 𝗪𝗔 𝗧𝗘𝗔𝗠*`
+  global.mess = {
+wait: "```Working on it....```",
+   success: "Sucess",
+   on: "bot online",
+   prem: "FOR PREMIUM USERS ONLY ADD YOUR NUMBER TO DATABASE TO ACCESS PREMIUM", 
+   off: "Akane off",
+   query: {
+       text: "Where's the text, man?",
+       link: "Where's the link, bro?",
+   },
+   error: {
+       fitur: "Sorry, bro, the feature has error. Please chat with the Bot Developer so it can be fixed immediately.",
+   },
+   only: {
+       group: "Sorry bro, This Feature Can Only Be Used In Groups only",
+private: "Sorry bro, This Feature Can Only Be Used In Private Chats",
+       owner: "Sorry bro, This Feature Can Only Be Used by Ravenn",
+       admin: " Sorry, this feature can only be used by Bot Admins",
+       badmin: "Sorry, bro, It Looks Like You Can't Use This Feature Because the Bot is Not yet Group Admin",
+       premium: "This feature is specifically for Maria & Ravenn beloved Premium users",
+   }
+}
 
-const EMAIL = "@gmail.com";
-const REGION = "Indonesia";
-const WEBSITE = "";
-const DATA_OWNER = [""];
+global.hituet = 0
+//false=disable and true=enable
+global.autoRecording = true //auto recording
+global.autoTyping = true //auto typing
+global.autorecordtype = true //auto typing + recording
+global.autoread = false //auto read messages
+global.autobio = true //auto update bio
+global.anti92 = true //auto block +92 
+global.autoswview = true //auto view status/story
 
-// Konfiqurasi Chat
-const ANTI_CALL = true; // jika true (setiap yang nelpon pribadi akan di block)
-const AUTO_READ = false; // jika true (setiap chat akan di baca/centang 2 biru)
-const AUTO_BACKUP = false; // jika true (setiap restart server, data backup di kirimkan ke wa owner);
-const MIDNIGHT_RESTART = true; // Restart setiap jam 12 malam
-const PRESENCE_UPDATE = ""; // unavailable, available, composing, recording, paused
-const TYPE_WELCOME = "2"; // 1, 2, 3, 4, 5, 6 text dan random
-const BG_WELCOME2 = "https://api.autoresbot.com/api/maker/bg-default";
-
-// antibadword di grub
-const BADWORD_WARNING = 3; // Jumlah maksimum peringatan sebelum tindakan diambil
-const BADWORD_ACTION = "both"; // tindakan setelah warning terpenuhi (kick, block, both)
-
-// antispam di grub
-const SPAM_LIMIT = 3; // Batas pesan dianggap spam
-const SPAM_COULDOWN = 10; // Waktu cooldown dalam detik (10 detik)
-const SPAM_WARNING = 3; // Jumlah maksimum peringatan sebelum tindakan diambil
-const SPAM_ACTION = "both"; // tindakan setelah warning terpenuhi (kick, block, both)
-
-// More
-const STATUS_SCHEDULED = true;
-
-const config = {
-  APIKEY,
-  phone_number_bot: NOMOR_BOT,
-  type_connection: CONNECTION,
-  bot_destination: DESTINATION,
-  owner_name: OWNER_NAME,
-  owner_number: DATA_OWNER,
-  owner_website: WEBSITE,
-  owner_email: EMAIL,
-  region: REGION,
-  version: VERSION,
-  rate_limit: RATE_LIMIT,
-  status_prefix: true, // wajib prefix : atau false tanpa prefix
-  prefix: [".", "!", "#"],
-  sticker_packname: OWNER_NAME,
-  sticker_author: `\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-  Rose Multidevice\n\nKartlzy Store - 6283821177025\n\n
-  ${moment.tz("Asia/Jakarta").format("DD/MM/YY")}`,
-  mode: MODE,
-  commandSimilarity: SIMILARITY,
-  anticall: ANTI_CALL,
-  autoread: AUTO_READ,
-  autobackup: AUTO_BACKUP,
-  PresenceUpdate: PRESENCE_UPDATE,
-  typewelcome: TYPE_WELCOME,
-  bgwelcome2: BG_WELCOME2,
-  midnight_restart: MIDNIGHT_RESTART,
-  scheduled: STATUS_SCHEDULED,
-  SPAM: {
-    limit: SPAM_LIMIT,
-    couldown: SPAM_COULDOWN,
-    warning: SPAM_WARNING,
-    action: SPAM_ACTION,
-  },
-  BADWORD: {
-    warning: BADWORD_WARNING,
-    action: BADWORD_ACTION,
-  },
-};
-
-export default config;
+let file = require.resolve(__filename)
+require('fs').watchFile(file, () => {
+  require('fs').unwatchFile(file)
+  console.log('\x1b[0;32m'+__filename+' \x1b[1;32mupdated!\x1b[0m')
+  delete require.cache[file]
+  require(file)
+})

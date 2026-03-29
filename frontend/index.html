@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>𝖳𝖬𝖪 WhatsApp Pairing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --dark: #0f172a;
+      --darker: #0a0e1a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #cbd5e1;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--darker);
+      color: var(--light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.5rem 2rem;
+      background: var(--dark);
+      color: var(--light);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light);
+    }
+    
+    .logo i {
+      color: var(--primary);
+    }
+
+    .container {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--card-border);
+    }
+    
+    .card-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .card-title i {
+      color: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .form-label i {
+      color: var(--primary);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: var(--dark);
+      color: var(--light);
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .form-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    
+    .form-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .result-box {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--dark);
+      border-radius: 8px;
+      min-height: 100px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      border: 1px solid var(--card-border);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .success {
+      color: var(--secondary);
+    }
+
+    .error {
+      color: var(--danger);
+    }
+
+    .dashboard-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 100;
+      border: none;
+    }
+    
+    .dashboard-btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.05);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+      background: var(--dark);
+      border-top: 1px solid var(--card-border);
+    }
+    
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .loading i {
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .dashboard-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <i class="fas fa-bolt"></i>
+<span>Hisoka-MD WhatsApp Pairing</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">
+          <i class="fas fa-qrcode"></i>
+          Get Pairing Code
+        </h2>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="number">
+          <i class="fas fa-phone"></i>
+          Phone Number:
+        </label>
+        <input class="form-input" type="text" id="number" placeholder="e.g., 23490123..." />
+      </div>
+      
+      <div class="form-group">
+        <button class="form-btn" onclick="startPair()">
+          <i class="fas fa-play"></i>
+          Get Pair Code
+        </button>
+      </div>
+      
+      <div id="output" class="result-box">Waiting for input...</div>
+    </div>
+  </div>
+
+  <button class="dashboard-btn" onclick="window.location.href='/dashboard'">
+    <i class="fas fa-home"></i>
+  </button>
+
+  <div class="footer">
+    <i class="fab fa-js" style="color: #ef4444"></i> by T.M.K and Ryoku &copy; 2025
+  </div>
+
+  <script>
+    function startPair() {  
+      const num = document.getElementById('number').value;  
+      const output = document.getElementById('output');  
+  
+      if (!num || !/^\d{8,15}$/.test(num)) {  
+        output.innerHTML = `<div class="error"><i class="fas fa-exclamation-circle"></i> Enter a valid number (8–15 digits).</div>`;  
+        return;  
+      }  
+  
+      output.innerHTML = `<div class="loading"><i class="fas fa-spinner"></i> Starting pairing process...</div>`;
+  
+      fetch(`/pair?number=${num}`)  
+        .then(() => {  
+          output.innerHTML = `<div class="loading"><i class="fas fa-spinner"></i> Pairing started... checking for code...</div>`;  
+          pollCode();  
+        })  
+        .catch(() => {  
+          output.innerHTML = `<div class="error"><i class="fas fa-exclamation-circle"></i> Failed to start pairing. Try again.</div>`;  
+        });  
+    }  
+  
+    function pollCode() {  
+      const poll = setInterval(() => {  
+        fetch("/pairing-code")  
+          .then(res => res.json())  
+          .then(data => {  
+            if (data.code) {  
+              clearInterval(poll);  
+              document.getElementById('output').innerHTML = 
+                `<div class="success"><i class="fas fa-check-circle"></i> Pairing Code for ${data.number || "User"}:</div>
+                 <div style="margin-top: 1rem; font-size: 1.2rem; text-align: center;">${data.code}</div>`;  
+            }  
+          });  
+      }, 2000);  
+    }
+    
+    // Add Enter key support
+    document.getElementById('number').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        startPair();
+      }
+    });
+  </script>  
+</body>
+</html>
