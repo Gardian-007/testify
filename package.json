@@ -1,10 +1,10 @@
 {
-  "name": "Hisoka-md",
+  "name": "TMK-pairing-server",
   "version": "1.0.0",
-  "description": "HISOKA-MD style WhatsApp Pairing Service (remodel )",
-  "main": "server.js",
+  "description": "Site for pairing by TMK team",
+  "main": "site.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "npx pm2-runtime start ecosystem.config.js"
   },
   "keywords": [
     "whiskeysockets",
@@ -24,6 +24,8 @@
       "chalk-animation": "^2.0.0",
       "gradient-string": "^1.2.0",
       "@vitalets/google-translate-api": "^9.2.0",
+       "@vitalets/google-translate-api": "^8.0.0",
+      "cheerio":"^1.0.0-rc.10",
       "child_process":"^1.0.2",
       "cloudscraper":"^4.6.0",
       "cluster":"^0.7.7",
@@ -40,7 +42,7 @@
       "file-type":"^16.5.3",
        "figlet": "^1.6.0",
       "fluent-ffmpeg":"^2.1.2",
-
+      "form-data":"^4.0.0",
       "colors": "latest",
       "fs":"0.0.1-security",
       "fs-extra":"^10.0.0",
@@ -48,6 +50,7 @@
          "dotenv": "^16.4.7",
       "google-it":"^1.6.2",
       "got":"^11.8.3",
+      "gradient-string":"^2.0.2",
       "header-generator":"^2.1.52",
       "http2":"^3.3.7",
       "https":"^1.0.0",
@@ -77,7 +80,7 @@
       "openai":"^3.2.1",
       "os":"^0.1.2",
       "path":"^0.12.7",
-
+         "google-it": "^1.6.4",
       "perf_hooks":"0.0.1",
       "pino":"^7.0.5",
       "qrcode-terminal":"^0.12.0",
@@ -91,7 +94,7 @@
        "google-tts-api": "^2.0.2",
       "tls":"^0.0.1",
       "url":"^0.11.4",
-
+       "lodash": "^4.17.21",
         "translate-google-api": "^1.0.4",
       "wa-sticker-formatter": "^4.4.4",
       "user-agents":"^1.1.279",
@@ -101,6 +104,7 @@
       "yargs":"^17.2.1",
       "youtube-yts":"^2.0.0",
       "youtubedl-core":"^4.11.4",
+      "yt-search":"^2.10.2",
       "ytdl-core":"^4.11.0"
     }
  } 

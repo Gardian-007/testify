@@ -1,43 +1,43 @@
 const fs = require('fs')
 
 global.owner = "234" //owner number
-global.footer = "Maria " //footer section
+global.footer = "T.M.K Team" //footer section
 global.status = false //"self/public" section of the bot
 global.prefa = ['','!','.',',','🐤','🗿']
-global.owner = ['2250101676111']
+global.owner = ['62']
 global.xprefix = '.'
-global.gambar = ''
-global.OWNER_NAME = "" //
-global.DEVELOPER = ["....A"] //
-global.BOT_NAME = "Hisoka-MD WhatsApp Bot"
-global.bankowner = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
-global.creatorName = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
+global.gambar = "https://files.catbox.moe/zhbsht.jpg"
+global.OWNER_NAME = "@hmmletts" //
+global.DEVELOPER = ["7151373704"] //
+global.BOT_NAME = "TMK Team WA Bot"
+global.bankowner = "Ayodele"
+global.creatorName = "Gabimaru"
 global.ownernumber = '2349012834275'  //creator number
-global.location = "..."
+global.location = "Nigeria, Ogun-state, ilese"
 global.prefa = ['','!','.','#','&']
 //================DO NOT CHANGE OR YOU'LL GET AN ERROR=============\
 global.footer = "𝐖𝐞𝐛 𝐛𝐨𝐭" //footer section
-global.link = ""
+global.link = "https://whatsapp.com/channel/0029VbB3x7IIyPtU0Sa3163f"
 global.autobio = true //auto update bio
-global.botName = "Hisoka-MD ⚡"
+global.botName = "𝗧𝗠𝗞 𝗪𝗲𝗯 𝗕𝗼𝘁 ⚡"
 global.version = "𝘄𝗲𝗯"
-global.botname = "Hisoka-MD"
-global.author = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
+global.botname = "𝗧𝗠𝗞 𝗪𝗲𝗯"
+global.author = "𝗧𝗠𝗞 𝗪𝗔 𝗧𝗘𝗔𝗠"
 global.themeemoji = '👨‍✈️'
-global.wagc = '.....'
-global.thumbnail = ''
+global.wagc = 'https://chat.whatsapp.com/GXhZqm2fSRID2XITi98sat'
+global.thumbnail = 'https://files.catbox.moe/y074ky.jpg'
 global.richpp = ' '
-global.packname = "Sticker By Hisoka-MD"
-global.author = "\n\n\nCreate by  web wa bot"
-global.creator = "2250101676111@s.whatsapp.net"
-global.ownername = "𝚅𝚛𝚞𝚜𝚑 𝙼𝚊𝚛𝚒𝚊 𝚟𝟸"
+global.packname = "Sticker By TMK bot"
+global.author = "\n\n\nCreate by TMK web wa bot"
+global.creator = "2349012834275@s.whatsapp.net"
+global.ownername = '𝗧𝗠𝗞 𝗪𝗔 𝗧𝗘𝗔𝗠' 
 global.onlyowner = `𝘴𝘰𝘳𝘳𝘺 𝘰𝘯𝘭𝘺 𝘧𝘰𝘳  𝘰𝘸𝘯𝘦𝘳𝘴`
   // reply 
 global.database = `𝘛𝘰 𝘣𝘦 𝘪𝘯  𝘥𝘢𝘵𝘢𝘣𝘢𝘴𝘦 𝘣𝘢𝘴𝘦 𝘤𝘰𝘯𝘵𝘢𝘤𝘵 𝗧𝗠𝗞 𝗪𝗔 𝗧𝗘𝗔𝗠*`
   global.mess = {
 wait: "```Working on it....```",
    success: "Sucess",
-   on: "bot online",
+   on: "𝗧𝗠𝗞 Web Active", 
    prem: "FOR PREMIUM USERS ONLY ADD YOUR NUMBER TO DATABASE TO ACCESS PREMIUM", 
    off: "Akane off",
    query: {
@@ -50,10 +50,10 @@ wait: "```Working on it....```",
    only: {
        group: "Sorry bro, This Feature Can Only Be Used In Groups only",
 private: "Sorry bro, This Feature Can Only Be Used In Private Chats",
-       owner: "Sorry bro, This Feature Can Only Be Used by Ravenn",
+       owner: "Sorry bro, This Feature Can Only Be Used by Richie",
        admin: " Sorry, this feature can only be used by Bot Admins",
        badmin: "Sorry, bro, It Looks Like You Can't Use This Feature Because the Bot is Not yet Group Admin",
-       premium: "This feature is specifically for Maria & Ravenn beloved Premium users",
+       premium: "This feature is specifically for Richie beloved Premium users",
    }
 }
 

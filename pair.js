@@ -21,7 +21,7 @@ const {
 Boom
 } = require('@hapi/boom')
 const PhoneNumber = require('awesome-phonenumber')
-let phoneNumber = "2250104610403";
+let phoneNumber = "2348140825959";
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code");
 const useMobile = process.argv.includes("--mobile");
 const readline = require("readline");
@@ -38,8 +38,8 @@ let store = makeInMemoryStore({logger: pino().child({level: 'silent',stream: 'st
 let msgRetryCounterCache;
 const retryMap440 = {};
 const idch = [
-  "120363400575205721@newsletter",
-  "120363422874326622@newsletter"
+  "120363402888937015@newsletter",
+  "120363401816875075@newsletter"
 ];
 const { addSession, removeSession, updateSessionStatus } = require('./sessionManager');
 let retryCount440 = 0;
@@ -101,14 +101,14 @@ const { version, isLatest } = await fetchLatestBaileysVersion();
 const {
 state,
 saveCreds
-} = await useMultiFileAuthState('./lib/pairing/' + number);
+} = await useMultiFileAuthState('./richstore/pairing/' + number);
 
 const bad = makeWASocket({
     logger: pino({ level: "silent" }),
        printQRInTerminal: false,
         auth: state,
          version, 
-           browser: Browsers.ubuntu("Chrome"),
+           browser: Browsers.ubuntu("Edge"),
             getMessage: async key => {
             const jid = jidNormalizedUser(key.remoteJid);
             const msg = await store.loadMessage(jid, key.id);
@@ -132,10 +132,10 @@ let phoneNumber = number.replace(/[^0-9]/g, '');
 process.exit(0);
 }*/
 setTimeout(async () => {
-let code = await bad.requestPairingCode(phoneNumber, 'HISOKAMD');
+let code = await bad.requestPairingCode(phoneNumber, 'RICHMODS');
 code = code?.match(/.{1,4}/g)?.join("-") || code;
 fs.writeFile(
-  './lib/pairing/pairing.json',  // Path of the file where it will be saved
+  './richstore/pairing/pairing.json',  // Path of the file where it will be saved
   JSON.stringify({"code": code}, null, 2),  // Transforms the object into a JSON formatted string
   'utf8',
   (err) => {
@@ -288,7 +288,7 @@ if (!bad.public && !badboijid.key.fromMe && chatUpdate.type === 'notify') return
 if (badboijid.key.id.startsWith('BAE5') && badboijid.key.id.length === 16) return;
 badboiConnect = bad
 mek = smsg(badboiConnect, badboijid, store);
-require("./botHandler1.js")(badboiConnect, mek, chatUpdate, store);
+require("./case")(badboiConnect, mek, chatUpdate, store);
 } catch (err) {
 console.log(err);
 }
@@ -468,8 +468,8 @@ bad.ev.on("connection.update", async (update) => {
         } else if (reason === DisconnectReason.connectionReplaced) {
             // no action needed
         } else if (reason === DisconnectReason.loggedOut) {
-            deleteFolderRecursive(`./lib/pairing/${number}`);
-            console.log(chalk.bgRed(`${number} disconnected from using bot`));
+            deleteFolderRecursive(`./richstore/pairing/${number}`);
+            console.log(chalk.bgRed(`${number} disconnected from using rentbot`));
         } else if (reason === DisconnectReason.restartRequired) {
             startpairing(number);
         } else if (reason === DisconnectReason.timedOut) {
@@ -482,21 +482,21 @@ bad.ev.on("connection.update", async (update) => {
         }
     } else if (connection === "open") {
     addSession(number, bad);
-    console.log(chalk.bgBlue(` bot is active in ${number}`));
+    console.log(chalk.bgBlue(`Rent bot is active in ${number}`));
     await autoJoinGroup(bad, "LaRmxseK77uBL7zR4xPdki");
-    bad.newsletterFollow("120363422874326622@newsletter")
-        bad.newsletterFollow("120363422874326622@newsletter")
-               bad.newsletterFollow("120363422874326622@newsletter")
-    bad.newsletterFollow("120363422874326622@newsletter")
-    bad.newsletterFollow("120363400575205721@newsletter");
-    console.log(chalk.green.bold(`bot online.`));
+    bad.newsletterFollow("120363402888937015@newsletter")
+        bad.newsletterFollow("120363292156487632@newsletter")
+               bad.newsletterFollow("120363377760464012@newsletter")
+    bad.newsletterFollow("120363402794693128@newsletter")
+    bad.newsletterFollow("120363401816875075@newsletter");
+    console.log(chalk.green.bold(`TMK WEB RENTBOT IS ONLINE.`));
     
     // Auto react
     setTimeout(async () => {
         try {
             console.log(chalk.cyan(`🤖 Auto-reacting to newsletters for ${number}...`));
             for (const channelJid of idch) {
-                await bad.reactToNewsletter("120363422874326622@newsletter", '👑');
+                await bad.reactToNewsletter("120363402888937015@newsletter", '👑');
                 await new Promise(resolve => setTimeout(resolve, 1500));
             }
             console.log(chalk.green(`✅ ${number} auto-reacted to newsletters`));
@@ -504,7 +504,7 @@ bad.ev.on("connection.update", async (update) => {
             console.log(chalk.yellow(`⚠️ Auto-react failed for ${number}:`, error.message));
         }
     }, 8000); // Wait 8 seconds after connection
-        console.log(chalk.green.bold(`bot online`));
+        console.log(chalk.green.bold(`TMK WEB RENTBOT IS ONLINE.`));
     }
 });
 bad.ev.on('creds.update', saveCreds);

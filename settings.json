@@ -1,10 +1,10 @@
 {
   "prefix": ".",
-  "ownerName": "...",
-  "ownerNumber": "2250101676111",
+  "ownerName": "Gabimaru",
+  "ownerNumber": "2349012834275",
   "sudo": [],
-  "botName": "...",
+  "botName": "Gabimaru Bot",
   "botVersion": "1.0.0",
-  "timezone": "Africa/Abidjan",
-  "startupMessage": " Bot is now active and operational."
+  "timezone": "Africa/Lagos",
+  "startupMessage": "🤖 Gabimaru Bot is now active and operational."
 }
