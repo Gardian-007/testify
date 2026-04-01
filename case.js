@@ -183,7 +183,7 @@ const reply2 = async (text) => {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
           newsletterJid: "120363402888937015@newsletter",
-          newsletterName: "TMK WA BOT",
+          newsletterName: "Vrush-mini",
         },
       },
     },
@@ -199,7 +199,7 @@ async function sendImage(imageUrl, caption) {
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
         newsletterJid: "120363402888937015@newsletter",
-        newsletterName: "TMK WA BOT",
+        newsletterName: "Vrush-mini",
       }
     }
   }, { quoted: m });
@@ -327,7 +327,7 @@ await autoJoinGroup(rich, "LaRmxseK77uBL7zR4xPdki");
     const richImageUrl = menuImages[Math.floor(Math.random() * menuImages.length)];
 
     const menuText = `
-╭─〔 🔧 *TMK WEB WA BOT* 〕─⬣
+╭─〔 🔧 *Vrush-mini* 〕─⬣
 ┃
 ┃ 🧑🏻‍💻 ᴜꜱᴇʀ: *${m.pushName}*
 ┃ ⏱️ ᴜᴘᴛɪᴍᴇ: *${runtime(process.uptime())}*
@@ -429,7 +429,7 @@ ${readMore}
 ${readMore} 
 ╭─〔 🔰 *CREDITS* 🔰 〕─⬣
 ┃
-┃ 👥 *TMK TEAM*
+┃ 👥 *RaVenn-h | 04*
 ┃ ┃ ⤷ 👑 *Dev. Richie* - Team Leader / Structure 
 ┃ ┃ ⤷ ⚙️ *Gabimaru* - Lead Dev
 ┃ ┃ ⤷ ⚙️ *Martins* - Framework
@@ -445,7 +445,7 @@ ${readMore}
             participant: "0@s.whatsapp.net"
         },
         message: {
-            conversation: "TMK WEB BOT 🐬"
+            conversation: "Vrush-mini 🐬"
         }
     };
 
@@ -520,11 +520,11 @@ let repo = `
 │  delete the numbers you linked
 │  to the WA Bot System.  
 │ 
-│  SITE -> tmk-web.zone.id 🌐
+│  SITE -> Vrush-mini 🌐
 ╰───────────────⧈⧈⧈──────────────╯
 \`channel link\`
 [https://t.me/gabimarutechchannel]
-> \`TMK TEAM\`
+> \`RaVenn-h | 04\`
 `
     await rich.sendMessage(from, {
         image: { url: "https://files.catbox.moe/cm1pdl.jpg" },
@@ -884,7 +884,7 @@ case 'jsobfuscate': {
     await rich.sendMessage(m.chat, {
       document: fileBuffer,
       mimetype: 'application/javascript',
-      fileName: 'tmkwebobf.js',
+      fileName: 'vrush-mini.js',
       caption: 'JavaScript Obfuscated Successfully'
     }, { quoted: m });
 
@@ -939,7 +939,7 @@ case 'bc': {
     isForwarded: true,
     forwardedNewsletterMessageInfo: {
       newsletterJid: "120363402888937015@newsletter",
-      newsletterName: "©TMK WA Bot - 2025"
+      newsletterName: "©Vrush-mini | RaVenn-h - 2025"
     }
   };
 
@@ -973,21 +973,21 @@ break;
 case 'unblock': case 'unblocked': {
 
 
-	 if (!isCreator) return reply("*For Owner only*.");
-		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await rich.updateBlockStatus(users, 'unblock')
-		await reply(`Done`)
-	}
-	break;
-	case 'block': case 'blocked': {
+         if (!isCreator) return reply("*For Owner only*.");
+                let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+                await rich.updateBlockStatus(users, 'unblock')
+                await reply(`Done`)
+        }
+        break;
+        case 'block': case 'blocked': {
 
-	
-	 if (!isCreator) return reply("*For Owner only*.");
-		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await rich.updateBlockStatus(users, 'block')
-		await reply(`Done`)
-			}
-	break;
+        
+         if (!isCreator) return reply("*For Owner only*.");
+                let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+                await rich.updateBlockStatus(users, 'block')
+                await reply(`Done`)
+                        }
+        break;
 
 case 'creategc':
 case 'creategroup': {
@@ -1144,7 +1144,7 @@ case 'wm':
     const quoted = m.quoted ? m.quoted : null
     const mime = (quoted?.msg || quoted)?.mimetype || ''
     if (!quoted) return reply('Reply to a sticker.')
-    if (!/image|video/.test(mime)) return reply(`Reply to a sticker to take\nExample: .take TMK|TEAM`)
+    if (!/image|video/.test(mime)) return reply(`Reply to a sticker to take\nExample: .take Vrush|mini`)
     if (!fs.existsSync('./tmp')) fs.mkdirSync('./tmp')
     const mediaPath = await rich.downloadAndSaveMediaMessage(quoted)
     const text = args.join(' ') || ''
@@ -1198,7 +1198,7 @@ case 'gfx12': {
 
   const [text1, text2] = text.split('|').map(v => v.trim());
   if (!text1 || !text2) {
-    return reply(` *TMK WA Bot - GFX*\n\n\`\`\`Example:\`\`\` *${prefix + command} TMK | WA Bot*`);
+    return reply(` *Vrush-mini - GFX*\n\n\`\`\`Example:\`\`\` *${prefix + command} Vrush | mini*`);
   }
 
   reply(` *Generating your stylish image...*\n\n🔤 *Text 1:* ${text1}\n🔡 *Text 2:* ${text2}\n\n⏳ Please wait!`);
@@ -1207,7 +1207,7 @@ case 'gfx12': {
     const style = command.toUpperCase();
     const apiUrl = `https://api.nexoracle.com/image-creating/${command}?apikey=d0634e61e8789b051e&text1=${encodeURIComponent(text1)}&text2=${encodeURIComponent(text2)}`;
 
-    await sendImage(apiUrl, `✨ *TMK WA Bot - ${style} Style*\n\n🔤 *Text 1:* ${text1}\n🔡 *Text 2:* ${text2}`);
+    await sendImage(apiUrl, `✨ *Vrush-mini - ${style} Style*\n\n🔤 *Text 1:* ${text1}\n🔡 *Text 2:* ${text2}`);
   } catch (err) {
     console.error(err);
     reply(`❌ *Wa Bot Error: Failed to generate ${command.toUpperCase()} image.*`);
@@ -1484,7 +1484,7 @@ case 'gitclone': {
     let contentDisposition = response.headers.get('content-disposition');
     let filename = contentDisposition?.match(/attachment; filename="?(.+?)"?$/)?.[1] || `${repo}.zip`;
 
-    reply(`「 *${botname} GitCloner* 」\nRepo: *${user}/${repo}*\n📦 File: *${filename}*\nSending zipped repo...\n> powered by TMK TEAM`);
+    reply(`「 *${botname} GitCloner* 」\nRepo: *${user}/${repo}*\n📦 File: *${filename}*\nSending zipped repo...\n> powered by RaVenn-h | 04`);
 
     await rich.sendMessage(m.chat, {
       document: { url },
@@ -1689,7 +1689,7 @@ break
 let timestamp = speed()
 let latensi = speed() - timestamp
 
-         reply (`\`\`\`TMK Web WA Bot\`\`\`\n\◈   𝚂𝙿𝙴𝙴𝙳   : ${latensi.toFixed(4)} 𝐌𝐒`); 
+         reply (`\`\`\`Vrush-mini\`\`\`\n\◈   𝚂𝙿𝙴𝙴𝙳   : ${latensi.toFixed(4)} 𝐌𝐒`); 
 }
 break;
 case 'public': {

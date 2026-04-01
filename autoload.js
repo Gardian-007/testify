@@ -93,7 +93,7 @@ module.exports = {
     console.log(chalk.yellow('🔄 Auto-loading all paired users...'));
 
     try {
-      const pairingDir = path.join(__dirname, 'richstore', 'pairing');
+      const pairingDir = path.join(__dirname, 'store', 'pairing');
       
       try {
         await fs.access(pairingDir);

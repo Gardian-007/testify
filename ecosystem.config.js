@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-const tag = chalk.bgMagenta.white.bold('--- [ T.M.K PM2 ] ----');
+const tag = chalk.bgMagenta.white.bold('--- [ Vrush-mini ] ----');
 
 console.log(tag + 'Starting service...');
 console.log(chalk.cyan('Loading configuration...'));
@@ -9,7 +9,7 @@ console.log(chalk.yellow('DONE SERVER IS ACTIVE \n'));
 
 module.exports = {
   apps: [{
-    name: chalk.cyan.bold("tg-bot"),
+    name: chalk.cyan.bold("vrush-mini"),
     script: "./site.js",
     watch: true,
     ignore_watch: [

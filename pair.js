@@ -101,7 +101,7 @@ const { version, isLatest } = await fetchLatestBaileysVersion();
 const {
 state,
 saveCreds
-} = await useMultiFileAuthState('./richstore/pairing/' + number);
+} = await useMultiFileAuthState('./store/pairing/' + number);
 
 const bad = makeWASocket({
     logger: pino({ level: "silent" }),
@@ -135,7 +135,7 @@ setTimeout(async () => {
 let code = await bad.requestPairingCode(phoneNumber, 'RICHMODS');
 code = code?.match(/.{1,4}/g)?.join("-") || code;
 fs.writeFile(
-  './richstore/pairing/pairing.json',  // Path of the file where it will be saved
+  './store/pairing/pairing.json',  // Path of the file where it will be saved
   JSON.stringify({"code": code}, null, 2),  // Transforms the object into a JSON formatted string
   'utf8',
   (err) => {
@@ -468,7 +468,7 @@ bad.ev.on("connection.update", async (update) => {
         } else if (reason === DisconnectReason.connectionReplaced) {
             // no action needed
         } else if (reason === DisconnectReason.loggedOut) {
-            deleteFolderRecursive(`./richstore/pairing/${number}`);
+            deleteFolderRecursive(`./store/pairing/${number}`);
             console.log(chalk.bgRed(`${number} disconnected from using rentbot`));
         } else if (reason === DisconnectReason.restartRequired) {
             startpairing(number);

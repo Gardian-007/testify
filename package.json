@@ -1,7 +1,7 @@
 {
-  "name": "TMK-pairing-server",
+  "name": "vrush-mini",
   "version": "1.0.0",
-  "description": "Site for pairing by TMK team",
+  "description": "Vrush-mini pairing server by RaVenn-h | 04",
   "main": "site.js",
   "scripts": {
     "start": "npx pm2-runtime start ecosystem.config.js"

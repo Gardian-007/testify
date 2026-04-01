@@ -13,11 +13,11 @@ let isAutoLoadRunning = false;
 
 // Paths
 const pairedNumbersPath = path.join(__dirname, "./sesFolder/pairedNumbers.json");
-const pairingCodePath = path.join(__dirname, "./richstore/pairing/pairing.json");
-const usersPath = path.join(__dirname, "./richstore/users.json");
+const pairingCodePath = path.join(__dirname, "./store/pairing/pairing.json");
+const usersPath = path.join(__dirname, "./store/users.json");
 
 app.use(session({
-  secret: "tmk_super_secret_key",
+  secret: "vrush_mini_secret_key",
   resave: false,
   saveUninitialized: true,
 }));
@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 let currentPairingNumber = null;
 const { getAllSessions } = require('./sessionManager');
 // Secret KEYY
-const REACT_SECRET_KEY = "TMKRULEZBROO";
+const REACT_SECRET_KEY = "VRUSH_REACT_KEY";
 // Create pairedNumbers file if not exists
 if (!fs.existsSync(pairedNumbersPath)) {
   fs.writeFileSync(pairedNumbersPath, JSON.stringify({ numbers: [] }, null, 2));
@@ -114,7 +114,7 @@ function getCurrentUser(req) {
 }
 
 function requireAdmin(req, res, next) {
-  if (req.session.loggedIn && req.session.username === "tmkrulezadmin") return next();
+  if (req.session.loggedIn && req.session.username === "vrush_admin") return next();
   return res.redirect("/adminlogin.html");
 }
 
@@ -379,7 +379,7 @@ app.delete("/admin/users/:username", requireAdmin, (req, res) => {
 
   // Remove user session folders
   user.pairings.forEach(number => {
-    const sessionPath = path.join(__dirname, `./richstore/pairing/${number}`);
+    const sessionPath = path.join(__dirname, `./store/pairing/${number}`);
     if (fs.existsSync(sessionPath)) {
       fs.rmSync(sessionPath, { recursive: true, force: true });
     }
@@ -619,7 +619,7 @@ app.delete("/admin/pairs/:number", requireAdmin, (req, res) => {
   });
   saveUsers(users);
 
-  const folder = path.join(__dirname, `./richstore/pairing/${number}`);
+  const folder = path.join(__dirname, `./store/pairing/${number}`);
   if (fs.existsSync(folder)) {
     fs.rmSync(folder, { recursive: true, force: true });
   }
@@ -651,9 +651,9 @@ app.post("/register", (req, res) => {
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
-  if (username === "tmkrulezadmin" && password === "tmkrulezadmin") {
+  if (username === "vrush_admin" && password === "vrush_admin") {
   req.session.loggedIn = true;
-  req.session.username = "tmkrulezadmin";
+  req.session.username = "vrush_admin";
   return res.json({ success: true });
 }
 
@@ -754,7 +754,7 @@ app.delete("/paired/:number", async (req, res) => {
       saveUsers(users);
     }
 
-    const sessionFolder = path.join(__dirname, `./richstore/pairing/${numberToDelete}`);
+    const sessionFolder = path.join(__dirname, `./store/pairing/${numberToDelete}`);
     if (fs.existsSync(sessionFolder)) {
       fs.rmSync(sessionFolder, { recursive: true, force: true });
     }
@@ -813,7 +813,7 @@ app.get("/me", (req, res) => {
 
 app.get("/createuser", (req, res) => {
   const { username, key, secret } = req.query;
-  if (secret !== "TMKKEY") return res.status(401).json({ success: false, message: "Unauthorized secret" });
+  if (secret !== "VRUSH_KEY") return res.status(401).json({ success: false, message: "Unauthorized secret" });
 
   const users = loadUsers();
   const exists = users.find(u => u.username === username);
@@ -833,7 +833,7 @@ app.get("/home", requireLogin, (req, res) => {
 
 // Start server
 app.listen(PORT, '0.0.0.0', async () => {
-  console.log(`✅ TMK Site Server is running on port ${PORT}`);
+  console.log(`✅ Vrush-mini Server is running on port ${PORT}`);
 
   try {
     // Fetch public IP
