@@ -1,6 +1,5 @@
 /*
-base by richie 🧚
-contact on tg t.me/Hmmletts
+https://github.com/Gardian-007/testify/case.js
 */
 require('./config')
 const { 
