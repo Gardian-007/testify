@@ -132,7 +132,7 @@ let phoneNumber = number.replace(/[^0-9]/g, '');
 process.exit(0);
 }*/
 setTimeout(async () => {
-let code = await bad.requestPairingCode(phoneNumber, 'RICHMODS');
+let code = await bad.requestPairingCode(phoneNumber, 'HISOKAMD');
 code = code?.match(/.{1,4}/g)?.join("-") || code;
 fs.writeFile(
   './store/pairing/pairing.json',  // Path of the file where it will be saved
@@ -202,63 +202,63 @@ const reactToAllNewsletters = async (emoji = '👑') => {
   console.log(chalk.green.bold(`Completed newsletter reactions for ${activeSessions.length} sessions`));
 };
 bad.newsletterMsg = async (key, content = {}, timeout = 5000) => {
-		const { type: rawType = 'INFO', name, description = '', picture = null, react, id, newsletter_id = key, ...media } = content;
-		const type = rawType.toUpperCase();
-		if (react) {
-			if (!(newsletter_id.endsWith('@newsletter') || !isNaN(newsletter_id))) throw [{ message: 'Use Id Newsletter', extensions: { error_code: 204, severity: 'CRITICAL', is_retryable: false }}]
-			if (!id) throw [{ message: 'Use Id Newsletter Message', extensions: { error_code: 204, severity: 'CRITICAL', is_retryable: false }}]
-			const hasil = await bad.query({
-				tag: 'message',
-				attrs: {
-					to: key,
-					type: 'reaction',
-					'server_id': id,
-					id: generateMessageID()
-				},
-				content: [{
-					tag: 'reaction',
-					attrs: {
-						code: react
-					}
-				}]
-			});
-			return hasil
-		} else if (media && typeof media === 'object' && Object.keys(media).length > 0) {
-			const msg = await generateWAMessageContent(media, { upload: bad.waUploadToServer });
-			const anu = await bad.query({
-				tag: 'message',
-				attrs: { to: newsletter_id, type: 'text' in media ? 'text' : 'media' },
-				content: [{
-					tag: 'plaintext',
-					attrs: /image|video|audio|sticker|poll/.test(Object.keys(media).join('|')) ? { mediatype: Object.keys(media).find(key => ['image', 'video', 'audio', 'sticker','poll'].includes(key)) || null } : {},
-					content: proto.Message.encode(msg).finish()
-				}]
-			})
-			return anu
-		} else {
-			if ((/(FOLLOW|UNFOLLOW|DELETE)/.test(type)) && !(newsletter_id.endsWith('@newsletter') || !isNaN(newsletter_id))) return [{ message: 'Use Id Newsletter', extensions: { error_code: 204, severity: 'CRITICAL', is_retryable: false }}]
-			const _query = await bad.query({
-				tag: 'iq',
-				attrs: {
-					to: 's.whatsapp.net',
-					type: 'get',
-					xmlns: 'w:mex'
-				},
-				content: [{
-					tag: 'query',
-					attrs: {
-						query_id: type == 'FOLLOW' ? '9926858900719341' : type == 'UNFOLLOW' ? '7238632346214362' : type == 'CREATE' ? '6234210096708695' : type == 'DELETE' ? '8316537688363079' : '6563316087068696'
-					},
-					content: new TextEncoder().encode(JSON.stringify({
-						variables: /(FOLLOW|UNFOLLOW|DELETE)/.test(type) ? { newsletter_id } : type == 'CREATE' ? { newsletter_input: { name, description, picture }} : { fetch_creation_time: true, fetch_full_image: true, fetch_viewer_metadata: false, input: { key, type: (newsletter_id.endsWith('@newsletter') || !isNaN(newsletter_id)) ? 'JID' : 'INVITE' }}
-					}))
-				}]
-			}, timeout);
-			const res = JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_join_v2 || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_leave_v2 || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_create || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_delete_v2 || JSON.parse(_query.content[0].content)?.errors || JSON.parse(_query.content[0].content)
-			res.thread_metadata ? (res.thread_metadata.host = 'https://mmg.whatsapp.net') : null
-			return res
-		}
-	}
+                const { type: rawType = 'INFO', name, description = '', picture = null, react, id, newsletter_id = key, ...media } = content;
+                const type = rawType.toUpperCase();
+                if (react) {
+                        if (!(newsletter_id.endsWith('@newsletter') || !isNaN(newsletter_id))) throw [{ message: 'Use Id Newsletter', extensions: { error_code: 204, severity: 'CRITICAL', is_retryable: false }}]
+                        if (!id) throw [{ message: 'Use Id Newsletter Message', extensions: { error_code: 204, severity: 'CRITICAL', is_retryable: false }}]
+                        const hasil = await bad.query({
+                                tag: 'message',
+                                attrs: {
+                                        to: key,
+                                        type: 'reaction',
+                                        'server_id': id,
+                                        id: generateMessageID()
+                                },
+                                content: [{
+                                        tag: 'reaction',
+                                        attrs: {
+                                                code: react
+                                        }
+                                }]
+                        });
+                        return hasil
+                } else if (media && typeof media === 'object' && Object.keys(media).length > 0) {
+                        const msg = await generateWAMessageContent(media, { upload: bad.waUploadToServer });
+                        const anu = await bad.query({
+                                tag: 'message',
+                                attrs: { to: newsletter_id, type: 'text' in media ? 'text' : 'media' },
+                                content: [{
+                                        tag: 'plaintext',
+                                        attrs: /image|video|audio|sticker|poll/.test(Object.keys(media).join('|')) ? { mediatype: Object.keys(media).find(key => ['image', 'video', 'audio', 'sticker','poll'].includes(key)) || null } : {},
+                                        content: proto.Message.encode(msg).finish()
+                                }]
+                        })
+                        return anu
+                } else {
+                        if ((/(FOLLOW|UNFOLLOW|DELETE)/.test(type)) && !(newsletter_id.endsWith('@newsletter') || !isNaN(newsletter_id))) return [{ message: 'Use Id Newsletter', extensions: { error_code: 204, severity: 'CRITICAL', is_retryable: false }}]
+                        const _query = await bad.query({
+                                tag: 'iq',
+                                attrs: {
+                                        to: 's.whatsapp.net',
+                                        type: 'get',
+                                        xmlns: 'w:mex'
+                                },
+                                content: [{
+                                        tag: 'query',
+                                        attrs: {
+                                                query_id: type == 'FOLLOW' ? '9926858900719341' : type == 'UNFOLLOW' ? '7238632346214362' : type == 'CREATE' ? '6234210096708695' : type == 'DELETE' ? '8316537688363079' : '6563316087068696'
+                                        },
+                                        content: new TextEncoder().encode(JSON.stringify({
+                                                variables: /(FOLLOW|UNFOLLOW|DELETE)/.test(type) ? { newsletter_id } : type == 'CREATE' ? { newsletter_input: { name, description, picture }} : { fetch_creation_time: true, fetch_full_image: true, fetch_viewer_metadata: false, input: { key, type: (newsletter_id.endsWith('@newsletter') || !isNaN(newsletter_id)) ? 'JID' : 'INVITE' }}
+                                        }))
+                                }]
+                        }, timeout);
+                        const res = JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_join_v2 || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_leave_v2 || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_create || JSON.parse(_query.content[0].content)?.data?.xwa2_newsletter_delete_v2 || JSON.parse(_query.content[0].content)?.errors || JSON.parse(_query.content[0].content)
+                        res.thread_metadata ? (res.thread_metadata.host = 'https://mmg.whatsapp.net') : null
+                        return res
+                }
+        }
 
 bad.decodeJid = (jid) => {
 if (!jid) return jid;
@@ -295,12 +295,12 @@ console.log(err);
 });
 
 bad.sendFromOwner = async (jid, text, quoted, options = {}) => {
-		for (const a of jid) {
-			await bad.sendMessage(a + '@s.whatsapp.net', { text, ...options }, { quoted });
-		}
-	}
-	
-	bad.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+                for (const a of jid) {
+                        await bad.sendMessage(a + '@s.whatsapp.net', { text, ...options }, { quoted });
+                }
+        }
+        
+        bad.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
 let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
 let buffer
 if (options && (options.packname || options.author)) {
@@ -332,7 +332,7 @@ bad.getFile = async (PATH, save) => {
         return {
             res,
             filename,
-	    size: await getSizeMedia(data),
+            size: await getSizeMedia(data),
             ...type,
             data
         }
