@@ -1,14 +1,14 @@
 const fs = require('fs')
 
-global.owner = ['04']
+global.owner = ['2250101676111']
 global.xprefix = '.'
 global.gambar = "https://files.catbox.moe/zhbsht.jpg"
 global.OWNER_NAME = "RaVenn-h"
-global.DEVELOPER = ["04"]
+global.DEVELOPER = ["2250101676111"]
 global.BOT_NAME = "Vrush-mini"
 global.bankowner = "RaVenn-h"
 global.creatorName = "RaVenn-h"
-global.ownernumber = '04'
+global.ownernumber = '2250101676111'
 global.location = "Unknown"
 global.prefa = ['','!','.','#','&']
 //================DO NOT CHANGE OR YOU'LL GET AN ERROR=============\
@@ -25,7 +25,7 @@ global.thumbnail = 'https://files.catbox.moe/y074ky.jpg'
 global.richpp = ' '
 global.packname = "Sticker By Vrush"
 global.author = "\n\n\nCreated by Vrush-mini"
-global.creator = "04@s.whatsapp.net"
+global.creator = "2250101676111@s.whatsapp.net"
 global.ownername = '𝗥𝗮𝗩𝗲𝗻𝗻-𝗵'
 global.onlyowner = `𝘴𝘰𝘳𝘳𝘺 𝘰𝘯𝘭𝘺 𝘧𝘰𝘳 𝘰𝘸𝘯𝘦𝘳`
   // reply 

@@ -152,12 +152,12 @@ const reply2 = async (text) => {
               externalAdReply: {
                 showAdAttribution: false,
                 renderLargerThumbnail: false,
-                title: `𝗧.𝗠.𝗞 𝗥𝗨𝗟𝗘𝗭`,
+                title: `𝗩𝗿𝘂𝘀𝗵-𝗺𝗶𝗻𝗶`,
                 body: `${pushname}`,
                 previewType: "VIDEO",
                 thumbnailUrl: "https://c.top4top.io/p_3493r01s90.jpg",
-                sourceUrl: "https://t.me/Gabimarutechchannel",
-                mediaUrl: "https://t.me/Gabimarutechchannel"
+                sourceUrl: "https://whatsapp.com/channel/0029VbB3x7IIyPtU0Sa3163f",
+                mediaUrl: "https://whatsapp.com/channel/0029VbB3x7IIyPtU0Sa3163f"
               }
             },
             text: text
@@ -250,7 +250,7 @@ function isTicTacToeBoardFull(board) {
 }
 const more = String.fromCharCode(8206);
 const readMore = more.repeat(4001);
-const Richie = "ʀɪᴄʜɪᴇ™";
+const RaVennH = "RaVenn-h";
 if (!rich.public) {
 if (!isCreator) return
 }
@@ -429,11 +429,9 @@ ${readMore}
 ${readMore} 
 ╭─〔 🔰 *CREDITS* 🔰 〕─⬣
 ┃
-┃ 👥 *RaVenn-h | 04*
-┃ ┃ ⤷ 👑 *Dev. Richie* - Team Leader / Structure 
-┃ ┃ ⤷ ⚙️ *Gabimaru* - Lead Dev
-┃ ┃ ⤷ ⚙️ *Martins* - Framework
-┃ ┃ ⤷ 🛡️ *X Prime* - Framework
+┃ ⚡ *Vrush-mini*
+┃ ┃ ⤷ 👑 *RaVenn-h* - Owner / Lead Dev
+┃ ┃ ⤷ 🛡️ *04* - Dev / Structure
 ┃
 ┗━━━━━━━━━━━━━━━━━━━━⬣`;
 
