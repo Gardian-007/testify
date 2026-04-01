@@ -7,7 +7,7 @@ const path = require("path");
 const { autoLoadPairs } = require('./autoload'); // adjust path if needed
 const app = express();
 app.set("json spaces", 2);
-const PORT = process.env.PORT || 1504;
+const PORT = process.env.PORT || 5000;
 let isShuttingDown = false;
 let isAutoLoadRunning = false;
 
